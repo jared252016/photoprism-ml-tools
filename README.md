@@ -32,7 +32,7 @@ Examples:
 
 # pp-proxy - v0.0.1
 ## Description
-pp-proxy is a simple websocket client for PhotoPrism's API that forwards requests to webhook urls. Supports queueing (sync) or async with rate limiting (eventually).
+pp-proxy is a simple websocket client for PhotoPrism's API that forwards requests to webhook urls. Supports queueing (sync) or async with rate limiting (eventually). Intended to work with something like n8n to automate machine learning proceses.
 
 Usage: 
 - pp-proxy start [host] [password]
