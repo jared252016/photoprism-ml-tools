@@ -1,5 +1,6 @@
 # pp-cli - v0.0.1
-## Simple auth tool in python for PhotoPrism. Returns the token. 
+## Description
+Simple auth tool in python for PhotoPrism. Returns the token. 
 Usage:
 - pp-cli help
 
@@ -28,3 +29,11 @@ Examples:
 - pp-cli album rm [album-name]
 
 - pp-cli album ls [partial-name]
+
+# pp-proxy - v0.0.1
+## Description
+pp-proxy is a simple websocket client for PhotoPrism's API that forwards requests to webhook urls. Supports queueing (sync) or async with rate limiting (eventually).
+
+Usage: 
+- pp-proxy start [host] [password]
+
