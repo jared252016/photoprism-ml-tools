@@ -38,6 +38,7 @@ pp-proxy is a simple websocket client for PhotoPrism's API that forwards request
 - pp-proxy start [host] [password]
 
 ### Example Config
+There can be any number of config files for webhooks in the hooks folder.
 ```
 webhook:
   name: file-add-hook
