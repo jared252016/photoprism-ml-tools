@@ -1,6 +1,6 @@
 # pp-cli - v0.0.1
 ## Description
-Simple auth tool in python for PhotoPrism. Returns the token. 
+Currently a aimple auth tool in python for PhotoPrism. Returns the token. Intended to be a full command line interface to PhotoPrism, although support on the deveopment for anything but labels may be limited.
 Usage:
 - pp-cli help
 
