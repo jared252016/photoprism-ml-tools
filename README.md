@@ -4,7 +4,7 @@ Usage:
 - pp-cli help
 
 
-# Goals
+## Goals
 
 Usage: 
 - pp-cli [search|config|help|image|video|album|label] [add|ls|rm|inspect|append|set|get|help]
