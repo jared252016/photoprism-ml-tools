@@ -1,0 +1,12 @@
+#!/bin/python3
+
+import sys
+import requests
+
+if sys.argv[1] == "help" or sys.argv[1] == "-h" or sys.argv[1] == "--help" or len(sys.argv) == 0:
+	print("Usage: ./pp-cli auth [host] [password]")
+
+if sys.argv[1] == "auth":
+	response = requests.post('https://'+ sys.argv[2] +'/api/v1/session', json={"username": "admin", "password":sys.argv[3]})
+
+	print(response.headers["X-Session-Id"])
