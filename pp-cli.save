@@ -3,9 +3,8 @@
 import sys
 import requests
 
-if len(sys.argv) <= 1 or sys.argv[1] == "help" or sys.argv[1] == "-h" or sys.argv[1] == "--help":
+if len(sys.argv) < 2 or sys.argv[1] == "help" or sys.argv[1] == "-h" or sys.argv[1] == "--help":
 	print("Usage: ./pp-cli auth [host] [password]")
-	exit()
 
 if sys.argv[1] == "auth":
 	response = requests.post('https://'+ sys.argv[2] +'/api/v1/session', json={"username": "admin", "password":sys.argv[3]})

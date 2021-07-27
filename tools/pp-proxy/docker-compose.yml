@@ -1,0 +1,10 @@
+version: "3.5"
+services:
+    pp-proxy:
+        build: .
+        container_name: "pp-proxy"
+        env_file: 
+            - .env
+        #environment: 
+        #    - PHOTOPRISM_HOST=localhost
+        #    - PHOTOPRISM_PASSWORD=photoprism

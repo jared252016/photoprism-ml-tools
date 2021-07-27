@@ -1,0 +1,9 @@
+webhook:
+  name: file-add-hook
+  type: event # Other option is foward-all
+  queue: False # Do not bother with queueing them, just send them in random order.
+  rate-limit: False # Max of % requests / minute. False if using queue.
+  event:
+    - index.indexing
+  url: https://n8n.p.skitzen.com/webhook/50a3e896-c180-43a3-8e87-00d4987cde97
+  method: POST

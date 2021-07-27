@@ -1,0 +1,88 @@
+#!/bin/python3
+
+import sys
+import requests
+import websocket
+import json
+###
+### ML/AI Methods
+###
+def analyze_media(basename, filename, fileroot, filesize):
+	for model in MODELS:
+		model.run()
+
+###
+###	Primary Methods
+###
+
+def on_new_file(ws, data):
+	baseName = data['baseName']
+	fileHash = data['fileHash'] # Unused
+	fileName = data['fileName']
+	fileRoot = data['fileRoot']
+	fileSize = data['fileSize']
+	analyze_media(baseName, fileName, fileRoot, fileSize)
+
+###
+### Main Method
+###
+def __main__():
+	if len(sys.argv) <= 1 or sys.argv[1] == "help" or sys.argv[1] == "-h" or sys.argv[1] == "--help":
+		print("Usage: ./pp-proxy start [host] [password]")
+		exit()
+	if sys.argv[1] == "start":
+		response = requests.post('https://'+ sys.argv[2] +'/api/v1/session', json={"username": "admin", "password":sys.argv[3]})
+
+		sess = response.headers["X-Session-Id"]
+		print("Received session token ending with: " + sess.substring(len(sess)-15))
+
+		print("Starting client service")
+		websocket.enableTrace(False)
+		ws = websocket.WebSocketApp("wss://" + sys.argv[2] + "/api/v1/ws", on_open=on_open, on_message=on_message, on_error=on_error, on_close=on_close)
+		ws.run_forever()
+
+### 
+### Backend Methods - Webhooks / yml
+###
+WEBHOOKS = []
+def load_config():
+	DIR="hooks/"
+	
+
+### 
+### Backend Methods - Websockets
+###
+
+def on_open(ws):
+	print("Sending authentication...")
+	ws.send(get_connect_json(sess))
+def on_message(ws, message):
+	event = ""
+	try:
+		data = json.loads(str(message))
+		event = data['event']
+		data = data['data']
+	except:
+		pass
+	# Get Event Type
+	if event == "index.indexing" or event == "index.completed":
+		if event == "index.indexing":
+			on_new_file(ws, data)
+		if event == "index.completed":
+			print("Indexing complete in " + str(data['seconds']) + " seconds")
+	elif event.startswith("notify."):
+		print(event)
+	else:
+		pass
+
+def on_error(ws, error):
+	print(error)
+
+def on_close(ws, close_status_code, close_msg):
+	print("### CLOSED ###")
+
+def get_connect_json(sess):
+	return '{"session":"'+sess+'"}'
+
+
+__main__()
