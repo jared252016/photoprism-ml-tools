@@ -38,7 +38,7 @@ pp-proxy is a simple websocket client for PhotoPrism's API that forwards request
 - pp-proxy start [host] [password]
 
 ### Example Config
----
+```
 webhook:
   name: file-add-hook
   filter: event # Other option is foward-all
@@ -48,7 +48,7 @@ webhook:
     - index.indexing
   url: https://localhost/webhook/50a3e896-c180-43a3-8e87-00d4987cde97
   method: POST
----
+```
 
 # pp-labeler
 ## Description
