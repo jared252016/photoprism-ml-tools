@@ -1,6 +1,13 @@
 # PhotoPrism Machine Learning Tools
 A set of tools written in python to help turn PhotoPrism into an image/video data set suite used for training machine learning algorithms. Contains a cli tool for labeling via scripts, a proxy for PhotoPrism to support webhooks, a "labeler" that uses pre-trained models and applies them to an existing data set quickly, and lastly a quick way to train a model based on data within PhotoPrism. Can be scripted to be ran in the cloud so that you are only paying for the server for as long as you use it, which should help make costs on training models much lower. 
 
+# THIS PROJECT HAS MOVED
+```
+New Project URL: https://gitlab.skitzen.com/machine-learning/dataset-management/photoprism-ml-tools
+
+The intention is to maintain a single location where all the projects that are in use are located. Will set up mirroring eventually to push changes back. 
+```
+
 ## pp-cli - v0.0.1
 ### Description
 Currently a aimple auth tool in python for PhotoPrism. Returns the token. Intended to be a full command line interface to PhotoPrism, although support on the deveopment for anything but labels may be limited.
